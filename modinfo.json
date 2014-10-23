@@ -1,0 +1,23 @@
+{
+    "context": "client",
+    "identifier": "MysticalFists.GW.Cheats",
+    "display_name": "MysticalFists Galactic War Cheats",
+    "description": "MysticalFists Galactic War cheats",
+    "author": "MysticalFists",
+    "version": "1.0",
+    "build": "73737",
+    "date": "2014/10/22",
+    "signature": "not yet implemented",
+    "forum": "https://forums.uberent.com/threads/rel-mysticalfists-galactic-war-cheats.65450/",
+    "category": [
+        "in-game",
+        "galactic-war"
+    ],
+    "scenes": {
+        "galactic_war": [
+			"coui://ui/main/game/galactic_war/cards/gwc_MysticalFists_all.js"
+        ]
+    },
+    "priority": 100,
+    "enabled": true
+}
