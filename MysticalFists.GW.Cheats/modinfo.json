@@ -2,17 +2,18 @@
     "context": "client",
     "identifier": "MysticalFists.GW.Cheats",
     "display_name": "MysticalFists Galactic War Cheats",
-    "description": "MysticalFists Galactic War cheats",
+    "description": "This mod adds Quick Build, Infinite Resources, High Health, and Move Speed hacks.",
     "author": "MysticalFists",
-    "version": "1.0",
+    "version": "1.1",
     "build": "73737",
-    "date": "2014/10/22",
+    "date": "2014/10/24",
     "signature": "not yet implemented",
     "forum": "https://forums.uberent.com/threads/rel-mysticalfists-galactic-war-cheats.65450/",
     "icon": "https://raw.githubusercontent.com/MysticalFists/PAGWC/master/MysticalFists.GW.Cheats/ui/mods/MysticalFistsTech/MysticalFists.png",
     "category": [
         "in-game",
-        "galactic-war"
+        "galactic-war",
+		"cheat"
     ],
     "scenes": {
         "galactic_war": [
