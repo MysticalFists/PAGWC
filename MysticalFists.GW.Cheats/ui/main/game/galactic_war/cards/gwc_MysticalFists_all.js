@@ -124,30 +124,6 @@ define(['shared/gw_common'], function(GW) {
             ];
             var mods = [];
             var modUnit = function(unit) {
-                mods.push({ // Nav Move Speed
-                    file: unit,
-                    path: 'navigation.move_speed',
-                    op: 'multiply',
-                    value: 4
-                });
-                mods.push({ // Nav Break Speed
-                    file: unit,
-                    path: 'navigation.brake',
-                    op: 'multiply',
-                    value: 4
-                });
-                mods.push({ // Nav Acceleration
-                    file: unit,
-                    path: 'navigation.acceleration',
-                    op: 'multiply',
-                    value: 4
-                });
-                mods.push({ // Nav Turn Speed
-                    file: unit,
-                    path: 'navigation.turn_speed',
-                    op: 'multiply',
-                    value: 4
-				});
 				mods.push({ // Energy Production Speed
                     file: unit,
                     path: 'production.energy',
