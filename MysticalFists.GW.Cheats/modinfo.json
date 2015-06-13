@@ -1,25 +1,25 @@
 {
-    "context": "client",
-    "identifier": "MysticalFists.GW.Cheats",
-    "display_name": "MysticalFists Galactic War Cheats",
-    "description": "This mod adds High Resources, High Health, and Reduced Build Speed.",
-    "author": "MysticalFists",
-    "version": "1.2",
-    "build": "80462",
-    "date": "2015/05/13",
-    "signature": "not yet implemented",
-    "forum": "https://forums.uberent.com/threads/rel-mysticalfists-galactic-war-cheats.65450/",
-    "icon": "https://raw.githubusercontent.com/MysticalFists/PAGWC/master/MysticalFists.GW.Cheats/ui/mods/MysticalFistsTech/MysticalFists.png",
-    "category": [
-        "in-game",
-        "galactic-war",
-		"cheat"
-    ],
-    "scenes": {
-        "galactic_war": [
-			"coui://ui/main/game/galactic_war/cards/gwc_MysticalFists_all.js"
-        ]
-    },
-    "priority": 100,
-    "enabled": true
+  "author": "MysticalFists",
+  "build": "82834",
+  "category": [
+    "in-game",
+    "galactic-war",
+    "cheat"
+  ],
+  "context": "client",
+  "date": "2015/06/13",
+  "description": "This mod adds High Resources, High Health, and Reduced Build Speed.",
+  "display_name": "MysticalFists Galactic War Cheats",
+  "enabled": true,
+  "forum": "https://forums.uberent.com/threads/rel-mysticalfists-galactic-war-cheats.65450/",
+  "icon": "https://raw.githubusercontent.com/MysticalFists/PAGWC/master/MysticalFists.GW.Cheats/ui/mods/MysticalFistsTech/MysticalFists.png",
+  "identifier": "MysticalFists.GW.Cheats",
+  "priority": 100,
+  "scenes": {
+    "galactic_war": [
+      "coui://ui/main/game/galactic_war/cards/gwc_MysticalFists_all.js"
+    ]
+  },
+  "signature": "not yet implemented",
+  "version": "1.4"
 }
