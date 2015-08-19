@@ -1,13 +1,13 @@
 {
   "author": "MysticalFists",
-  "build": "82834",
+  "build": "85138",
   "category": [
     "in-game",
     "galactic-war",
     "cheat"
   ],
   "context": "client",
-  "date": "2015/06/13",
+  "date": "2015/08/19",
   "description": "This mod adds High Resources, High Health, and Reduced Build Speed.",
   "display_name": "MysticalFists Galactic War Cheats",
   "enabled": true,
@@ -21,5 +21,5 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "1.4"
+  "version": "1.5"
 }

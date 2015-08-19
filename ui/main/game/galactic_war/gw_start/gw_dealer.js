@@ -1,5 +1,7 @@
 define([
+    "require"
 ], function(
+    require
 ) {
     var deck = [
         'gwc_add_card_slot',
@@ -66,7 +68,9 @@ define([
         'gwc_enable_vehicles_all',
         'gwc_enable_orbital_all',
         'gwc_enable_sea_all',
+        'gwc_enable_titans',
 		'gwc_MysticalFists_all',
+        'gwc_cost_titans'
     ];
 
     var aiDeck = [
@@ -92,7 +96,7 @@ define([
         'gwc_storage_and_buff',
         'gwc_minion',
     ];
-    
+
     var extraDeck = [
         'gwc_start_vehicle',
         'gwc_start_air',
@@ -111,11 +115,11 @@ define([
 
     var loadCount = deck.length + aiDeck.length + extraDeck.length;
     var loaded = $.Deferred();
-    
+
     var saveDeck = deck;
     deck = [];
     _.forEach(saveDeck, function (cardId) {
-        //console.log('ADDING CARD: '+cardId);
+        //api.debug.log('ADDING CARD: '+cardId);
         require(['cards/' + cardId], function (card) {
             card.id = cardId;
             cards.push(card);
@@ -124,7 +128,7 @@ define([
                 loaded.resolve();
         });
     })
-    
+
     var saveAIDeck = aiDeck;
     aiDeck = [];
     _.forEach(saveAIDeck, function(cardId) {
@@ -136,7 +140,7 @@ define([
                 loaded.resolve();
         });
     })
-    
+
     _.forEach(extraDeck, function(cardId) {
         require(['cards/' + cardId], function(card) {
             card.id = cardId;
@@ -152,23 +156,23 @@ define([
         allCards = cards.concat(aiCards).concat(_.values(extraCards));
         allDeck = deck.concat(aiDeck).concat(extraDeck);
     });
-    
+
     return {
         deal: function (params) {
             var galaxy = params.galaxy;
             var inventory = params.inventory;
             var ready = params.ready;
             var rng = params.rng || new Math.seedrandom();
-            
+
             var result = $.Deferred();
-            
+
             var run = function() {
-                //console.log("DEALER");
+                //api.debug.log("DEALER");
                 var remainingAICards = aiCards.slice(0);
                 var remainingAIDeck = aiDeck.slice(0);
-                
+
                 _.forEach(allCards, function(card) {
-                    if (card.getContext && !cardContexts[card.id]) 
+                    if (card.getContext && !cardContexts[card.id])
                         cardContexts[card.id] = card.getContext(galaxy, inventory);
                 });
 
@@ -186,13 +190,13 @@ define([
                         var systemDeck = [];
                         var fullHand = [];
                         var hand = [];
-                        var resultIndex = undefined;             
+                        var resultIndex = undefined;
                         var predealtCard = false;
 
                         if (first_pass && !_.isEmpty(system.cardList())) {
-                          
+
                             var preCard = system.cardList()[0];
-                            if (!_.isString(preCard)) 
+                            if (!_.isString(preCard))
                                 return; // If the system already has a card, consider it dealt
 
                             loadout_systems[system.name()] = true;
@@ -212,7 +216,7 @@ define([
                                 resultIndex = 0;
                             }
                         }
-                        
+
                         if (!hand.length)
                         {
                             var aiSystem = (system.ai() && !!remainingAICards.length);
@@ -229,10 +233,10 @@ define([
                                 var result = card.deal && card.deal(system, context, inventory);
                                 if (match)
                                     result.chance = 0;
-                                
+
                                 return result;
                             });
-                            hand = _.map(fullHand, function(deal, index) { 
+                            hand = _.map(fullHand, function(deal, index) {
                                 if (!_.isObject(deal))
                                     return;
                                 deal.index = index;
@@ -240,7 +244,7 @@ define([
                             });
                             hand = _.filter(hand, 'chance');
                         }
-                        
+
                         if (hand.length) {
                             if (resultIndex === undefined) {
                                 var probability = _.reduce(hand, function(sum, card) {
@@ -260,10 +264,10 @@ define([
                                 var resultDeal = fullHand[resultIndex];
                                 var params = resultDeal && resultDeal.params;
                                 var cardId = systemDeck[resultIndex];
-                                var systemCard = { 
+                                var systemCard = {
                                     id: cardId
                                 };
-                         
+
                                 if (params && _.isObject(params))
                                     _.extend(systemCard, params);
 
@@ -285,14 +289,14 @@ define([
                             var cardId = systemDeck[index];
                             var context = cardContexts[cardId];
                             if (index === resultIndex) {
-                                //console.log("Keep: " + cardId);
+                                //api.debug.log("Keep: " + cardId);
                                 card.keep && card.keep(params, context);
                             }
                             else {
                                 card.discard && card.discard(params, context);
                             }
                         });
-                        
+
                         // Remove AI cards from the deck
                         if (system.ai()) {
                             remainingAICards.splice(index, 1);
@@ -304,7 +308,7 @@ define([
                 };
 
                 _.times(CARDS_PER_NORMAL_SYSTEM, dealCardToEachSystem);
-                
+
                 _.forEach(allCards, function(card, index) {
                     var cardId = allDeck[index];
                     var context = cardContexts[cardId];
@@ -317,11 +321,11 @@ define([
                     ready();
                 result.resolve();
             };
-            
+
             loaded.then(run);
             return result.promise();
         },
-        
+
         // Do everything necessary to deal a single card
         // params: (example)
         //      {
@@ -411,7 +415,7 @@ define([
 
                     fullHand = _.map(cards, function (card, cardIndex) {
                         var context = cardContexts[card.id];
- 
+
                         var match = inventory.hasCard(card.id) || _.any(list, function (element) {
                             return element.id === card.id;
                         });
@@ -453,7 +457,7 @@ define([
                             var result = hand[index];
                             resultIndex = result.index;
                         }
-                        
+
                         if (resultIndex !== undefined) {
                             var resultDeal = fullHand[resultIndex];
                             var params = resultDeal && resultDeal.params;
@@ -475,7 +479,7 @@ define([
             });
             return result;
         },
-        
+
         allCards: function() {
             var result = $.Deferred();
             loaded.then(function() {
