@@ -1,18 +1,18 @@
 {
   "author": "MysticalFists",
-  "build": "82834",
+  "build": "86422",
   "category": [
     "in-game",
     "galactic-war",
     "cheat"
   ],
   "context": "client",
-  "date": "2015/06/13",
+  "date": "2015/08/24",
   "description": "This mod adds High Resources, High Health, and Reduced Build Speed.",
   "display_name": "MysticalFists Galactic War Cheats",
   "enabled": true,
   "forum": "https://forums.uberent.com/threads/rel-mysticalfists-galactic-war-cheats.65450/",
-  "icon": "https://raw.githubusercontent.com/MysticalFists/PAGWC/master/MysticalFists.GW.Cheats/ui/mods/MysticalFistsTech/MysticalFists.png",
+  "icon": "https://github.com/MysticalFists/PAGWC/blob/master/ui/mods/MysticalFistsTech/MysticalFists.png?raw=true",
   "identifier": "MysticalFists.GW.Cheats",
   "priority": 100,
   "scenes": {
@@ -21,5 +21,5 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "1.4"
+  "version": "1.6"
 }
